@@ -1,10 +1,16 @@
 package com.sky.mapper;
 
+import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
+import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.enumeration.OperationType;
+import com.sky.vo.DishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.awt.image.PixelGrabber;
+import java.util.List;
 
 @Mapper
 public interface DishMapper {
@@ -19,4 +25,11 @@ public interface DishMapper {
 
     @AutoFill(value = OperationType.INSERT)
     void insert(Dish dish);
+
+    Page<DishVO> page(DishPageQueryDTO dishPageQueryDTO);
+
+    @Select("select * from dish where id = #{id}")
+    Dish getById(Long id);
+
+    void deleteBatchIds(List<Long> ids);
 }
