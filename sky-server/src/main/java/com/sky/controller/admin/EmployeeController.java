@@ -76,7 +76,7 @@ public class EmployeeController {
     public Result save(@RequestBody EmployeeDTO employeeDTO){
         log.info("employee+{}",employeeDTO);
         employeeService.save(employeeDTO);
-        return null;
+        return Result.success();
     }
 
     @GetMapping("/page")
