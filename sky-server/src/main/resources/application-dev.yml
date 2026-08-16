@@ -13,3 +13,7 @@ sky:
     access-key-secret:  i9I7wHCgKlRGwMjPlztEaejyNPWnLR
     bucket-name: java-ai-tinas
 
+  wechat:
+    appid: wx88317ac0ebc0b02a
+    appsecret: 5e4aa62d7f0bac1a7c5a01fb711fdc55
+
