@@ -6,10 +6,7 @@ import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
 import com.sky.enumeration.OperationType;
 import com.sky.vo.DishItemVO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,6 +19,7 @@ public interface SetmealMapper {
     @AutoFill(OperationType.INSERT)
     @Insert("insert into setmeal (name, category_id, price, description, image) " +
             "values (#{name}, #{categoryId}, #{price}, #{description}, #{image})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void save(Setmeal setmeal);
 
     Page<Setmeal> page(SetmealPageQueryDTO setmealPageQueryDTO);
