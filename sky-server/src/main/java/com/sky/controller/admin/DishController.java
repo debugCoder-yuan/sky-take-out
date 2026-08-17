@@ -68,6 +68,7 @@ public class DishController {
         dishService.updateWithFlavor(dishDTO);
         //删除所有的缓存
         Set keys = redisTemplate.keys("dish_*");
+        log.info("keys：{}",keys);
         redisTemplate.delete(keys);
         return Result.success();
     }
