@@ -1,6 +1,10 @@
 package com.sky.mapper;
 
+import com.github.pagehelper.Page;
+import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
+import com.sky.vo.OrdersPageQueryVO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,4 +24,14 @@ public interface OrderMapper {
      */
     void update(Orders orders);
 
+    Page<OrdersPageQueryVO> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    @Select("select * from orders where id = #{id}")
+    OrdersPageQueryVO getById(Long id);
+
+    @Select("select * from orders where id = #{id}")
+    Orders getByIdOrders(Long id);
+
+    @Delete("delete from orders where id = #{id}")
+    void deleteById(Long id);
 }
