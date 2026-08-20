@@ -16,3 +16,10 @@ sky:
   wechat:
     appid: wx88317ac0ebc0b02a
     secret: 5e4aa62d7f0bac1a7c5a01fb711fdc55
+#    mchid: wxff0f0a6c9f0e64a0
+#    mchSerialNo: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtw9eZ
+#    privateKeyFilePath: classpath:wechat_pay/apiclient_key.pem
+#    apiV3Key: 7v6a76669z4z99999999999999999999
+#    weChatPayCertFilePath: classpath:wechat_pay/apiclient_cert.pem
+#    notifyUrl: http://localhost:8080/wechat/notify
+#    refundNotifyUrl: http://localhost:8080/wechat/refund-notify
