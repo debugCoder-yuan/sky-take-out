@@ -74,7 +74,10 @@
                 </set>
                 where id = #{id}
         </update>
-    <select id="pageQuery" resultType="com.sky.vo.OrdersPageQueryVO">
+        <update id="updateStatus">
+                update orders set status = #{status} where id = #{id}
+        </update>
+        <select id="pageQuery" resultType="com.sky.vo.OrdersPageQueryVO">
                 select * from orders
                 <where>
                         <if test="userId != null">
@@ -99,5 +102,14 @@
                 order by order_time desc
 
     </select>
+        <select id="getStatistics" resultType="com.sky.vo.OrderStatisticsVO">
+                select
+                        (select count(*) from orders where status = 2) as toBeConfirmed,
+                        (select count(*) from orders where status = 3) as confirmed,
+                        (select count(*) from orders where status = 4) as deliveryInProgress
+        </select>
+        <select id="getOrderDetailById" resultType="com.sky.vo.OrderVO">
+                select * from orders where id = #{id}
+        </select>
 
 </mapper>

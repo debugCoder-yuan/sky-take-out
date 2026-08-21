@@ -25,6 +25,9 @@ public class OrdersPageQueryVO {
     //下单用户id
     private Long userId;
 
+    //订单菜品信息
+    private String orderDishes;
+
     //地址id
     private Long addressBookId;
 

@@ -23,3 +23,8 @@ sky:
 #    weChatPayCertFilePath: classpath:wechat_pay/apiclient_cert.pem
 #    notifyUrl: http://localhost:8080/wechat/notify
 #    refundNotifyUrl: http://localhost:8080/wechat/refund-notify
+
+
+  baidu:
+    ak: qi7eQPrM2qk8D4FfYYA6DIsimDcDLDTb
+    shop-address: 湖南省湘潭市雨湖区湘潭大学第一教学楼

@@ -3,10 +3,13 @@ package com.sky.mapper;
 import com.github.pagehelper.Page;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
+import com.sky.vo.OrderStatisticsVO;
+import com.sky.vo.OrderVO;
 import com.sky.vo.OrdersPageQueryVO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface OrderMapper {
@@ -34,4 +37,14 @@ public interface OrderMapper {
 
     @Delete("delete from orders where id = #{id}")
     void deleteById(Long id);
+
+    OrderStatisticsVO getStatistics();
+
+    OrderVO getOrderDetailById(Long id);
+
+
+    void updateStatus(Long id, Integer status);
+
+    @Update("update orders set rejection_reason = #{rejectionReason}, status = 7 where id = #{id}")
+    void rejection(Long id, String rejectionReason);
 }
