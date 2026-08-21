@@ -11,6 +11,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Mapper
 public interface OrderMapper {
     void insert(Orders orders);
@@ -47,4 +50,10 @@ public interface OrderMapper {
 
     @Update("update orders set rejection_reason = #{rejectionReason}, status = 7 where id = #{id}")
     void rejection(Long id, String rejectionReason);
+
+    @Select("select * from orders where status = #{status} and order_time < #{orderTime}")
+    List<Orders> getByStatusAndOrderTime(Integer status, LocalDateTime orderTime);
+
+    @Select("select * from orders where status = #{status}")
+    List<Orders> getByStatus(Integer deliveryInProgress);
 }
