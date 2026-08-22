@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--suppress ALL -->
+<mapper namespace="com.sky.mapper.ReportMapper">
+
+
+    <select id="turnover" resultType="java.lang.Double">
+        select sum(amount) from orders
+        <where>
+            <if test="begin != null">
+                and order_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+               and  order_time &lt; #{end}
+            </if>
+            <if test="status != null">
+               and  status = #{status}
+            </if>
+        </where>
+    </select>
+    <select id="countUser" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="begin != null">
+                and create_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and  create_time &lt; #{end}
+            </if>
+        </where>
+    </select>
+    <select id="countOrder" resultType="java.lang.Integer">
+        select count(id) from orders
+        <where>
+            <if test="begin != null">
+                and order_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and  order_time &lt; #{end}
+            </if>
+            <if test="status != null">
+                and  status = #{status}
+            </if>
+        </where>
+    </select>
+    <select id="top10" resultType="com.sky.dto.GoodsSalesDTO">
+        select od.name, sum(od.number) number from orders as o, order_detail as od  where o.id = od.order_id
+        <if test="begin != null">
+            and o.order_time &gt; #{begin}
+        </if>
+        <if test="end != null">
+            and  o.order_time &lt; #{end}
+        </if>
+        <if test="status != null">
+            and  o.status = #{status}
+        </if>
+        group by od.name
+        order by number desc
+        limit 0,10
+    </select>
+</mapper>
